@@ -14,6 +14,14 @@
 		E32F4D9921F706A300A3B527 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F4D9721F706A300A3B527 /* LaunchScreen.storyboard */; };
 		E32F4DA421F706A300A3B527 /* WhitbreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32F4DA321F706A300A3B527 /* WhitbreadTests.swift */; };
 		E32F4DB321F7085400A3B527 /* MCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F4DB221F7085400A3B527 /* MCConstants.m */; };
+		E33CBF8821F7B15300196498 /* FourSquareURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF8721F7B15300196498 /* FourSquareURL.swift */; };
+		E33CBF8A21F7B17300196498 /* FourSquareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF8921F7B17300196498 /* FourSquareConstants.swift */; };
+		E33CBF8C21F7B36B00196498 /* FourSquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF8B21F7B36B00196498 /* FourSquareClient.swift */; };
+		E33CBF8E21F7B52900196498 /* FourSquareNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF8D21F7B52900196498 /* FourSquareNetworkOperation.swift */; };
+		E33CBF9121F7B5FA00196498 /* Range+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF9021F7B5FA00196498 /* Range+Utils.swift */; };
+		E33CBF9421F7B83400196498 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF9321F7B83400196498 /* Venue.swift */; };
+		E33CBF9621F7BEE500196498 /* FourSquareVenueSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF9521F7BEE500196498 /* FourSquareVenueSearch.swift */; };
+		E33CBF9821F7C59D00196498 /* FourSquareVenueSearchCriteriaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33CBF9721F7C59D00196498 /* FourSquareVenueSearchCriteriaTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +49,14 @@
 		E32F4DB021F7085300A3B527 /* Whitbread-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Whitbread-Bridging-Header.h"; sourceTree = "<group>"; };
 		E32F4DB121F7085400A3B527 /* MCConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConstants.h; sourceTree = "<group>"; };
 		E32F4DB221F7085400A3B527 /* MCConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConstants.m; sourceTree = "<group>"; };
+		E33CBF8721F7B15300196498 /* FourSquareURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareURL.swift; sourceTree = "<group>"; };
+		E33CBF8921F7B17300196498 /* FourSquareConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareConstants.swift; sourceTree = "<group>"; };
+		E33CBF8B21F7B36B00196498 /* FourSquareClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareClient.swift; sourceTree = "<group>"; };
+		E33CBF8D21F7B52900196498 /* FourSquareNetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareNetworkOperation.swift; sourceTree = "<group>"; };
+		E33CBF9021F7B5FA00196498 /* Range+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Range+Utils.swift"; sourceTree = "<group>"; };
+		E33CBF9321F7B83400196498 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		E33CBF9521F7BEE500196498 /* FourSquareVenueSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareVenueSearch.swift; sourceTree = "<group>"; };
+		E33CBF9721F7C59D00196498 /* FourSquareVenueSearchCriteriaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareVenueSearchCriteriaTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +98,8 @@
 		E32F4D8D21F7069F00A3B527 /* Whitbread */ = {
 			isa = PBXGroup;
 			children = (
+				E33CBF8F21F7B5E500196498 /* Utils */,
+				E33CBF8621F7B0EA00196498 /* Network */,
 				E32F4DAE21F7080B00A3B527 /* Environments */,
 				E32F4D8E21F7069F00A3B527 /* AppDelegate.swift */,
 				E32F4D9021F7069F00A3B527 /* ViewController.swift */,
@@ -98,6 +116,7 @@
 			children = (
 				E32F4DA321F706A300A3B527 /* WhitbreadTests.swift */,
 				E32F4DA521F706A300A3B527 /* Info.plist */,
+				E33CBF9721F7C59D00196498 /* FourSquareVenueSearchCriteriaTest.swift */,
 			);
 			path = WhitbreadTests;
 			sourceTree = "<group>";
@@ -111,6 +130,35 @@
 				E32F4DB021F7085300A3B527 /* Whitbread-Bridging-Header.h */,
 			);
 			path = Environments;
+			sourceTree = "<group>";
+		};
+		E33CBF8621F7B0EA00196498 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E33CBF9221F7B6C800196498 /* JSON Objects */,
+				E33CBF8721F7B15300196498 /* FourSquareURL.swift */,
+				E33CBF8921F7B17300196498 /* FourSquareConstants.swift */,
+				E33CBF8B21F7B36B00196498 /* FourSquareClient.swift */,
+				E33CBF8D21F7B52900196498 /* FourSquareNetworkOperation.swift */,
+				E33CBF9521F7BEE500196498 /* FourSquareVenueSearch.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E33CBF8F21F7B5E500196498 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E33CBF9021F7B5FA00196498 /* Range+Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E33CBF9221F7B6C800196498 /* JSON Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E33CBF9321F7B83400196498 /* Venue.swift */,
+			);
+			path = "JSON Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +215,7 @@
 					};
 					E32F4D9E21F706A300A3B527 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = E32F4D8A21F7069F00A3B527;
 					};
 				};
@@ -216,7 +265,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32F4DB321F7085400A3B527 /* MCConstants.m in Sources */,
+				E33CBF8C21F7B36B00196498 /* FourSquareClient.swift in Sources */,
 				E32F4D9121F7069F00A3B527 /* ViewController.swift in Sources */,
+				E33CBF8A21F7B17300196498 /* FourSquareConstants.swift in Sources */,
+				E33CBF9621F7BEE500196498 /* FourSquareVenueSearch.swift in Sources */,
+				E33CBF9421F7B83400196498 /* Venue.swift in Sources */,
+				E33CBF8E21F7B52900196498 /* FourSquareNetworkOperation.swift in Sources */,
+				E33CBF9121F7B5FA00196498 /* Range+Utils.swift in Sources */,
+				E33CBF8821F7B15300196498 /* FourSquareURL.swift in Sources */,
 				E32F4D8F21F7069F00A3B527 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32F4DA421F706A300A3B527 /* WhitbreadTests.swift in Sources */,
+				E33CBF9821F7C59D00196498 /* FourSquareVenueSearchCriteriaTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F53K8XZ6AA;
 				INFOPLIST_FILE = Whitbread/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,7 +449,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Whitbread/Environments/Whitbread-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -404,6 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F53K8XZ6AA;
 				INFOPLIST_FILE = Whitbread/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,7 +470,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.maarut.Whitbread;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Whitbread/Environments/Whitbread-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -424,6 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F53K8XZ6AA;
 				INFOPLIST_FILE = WhitbreadTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +491,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.maarut.WhitbreadTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Whitbread.app/Whitbread";
 			};
@@ -445,6 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F53K8XZ6AA;
 				INFOPLIST_FILE = WhitbreadTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.maarut.WhitbreadTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Whitbread.app/Whitbread";
 			};
