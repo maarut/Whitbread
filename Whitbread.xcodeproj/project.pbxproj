@@ -13,6 +13,7 @@
 		E32F4D9621F706A300A3B527 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32F4D9521F706A300A3B527 /* Assets.xcassets */; };
 		E32F4D9921F706A300A3B527 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F4D9721F706A300A3B527 /* LaunchScreen.storyboard */; };
 		E32F4DA421F706A300A3B527 /* WhitbreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32F4DA321F706A300A3B527 /* WhitbreadTests.swift */; };
+		E32F4DB321F7085400A3B527 /* MCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F4DB221F7085400A3B527 /* MCConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,10 @@
 		E32F4D9F21F706A300A3B527 /* WhitbreadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhitbreadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32F4DA321F706A300A3B527 /* WhitbreadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitbreadTests.swift; sourceTree = "<group>"; };
 		E32F4DA521F706A300A3B527 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E32F4DAF21F7082D00A3B527 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E32F4DB021F7085300A3B527 /* Whitbread-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Whitbread-Bridging-Header.h"; sourceTree = "<group>"; };
+		E32F4DB121F7085400A3B527 /* MCConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConstants.h; sourceTree = "<group>"; };
+		E32F4DB221F7085400A3B527 /* MCConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +82,7 @@
 		E32F4D8D21F7069F00A3B527 /* Whitbread */ = {
 			isa = PBXGroup;
 			children = (
+				E32F4DAE21F7080B00A3B527 /* Environments */,
 				E32F4D8E21F7069F00A3B527 /* AppDelegate.swift */,
 				E32F4D9021F7069F00A3B527 /* ViewController.swift */,
 				E32F4D9221F7069F00A3B527 /* Main.storyboard */,
@@ -94,6 +100,17 @@
 				E32F4DA521F706A300A3B527 /* Info.plist */,
 			);
 			path = WhitbreadTests;
+			sourceTree = "<group>";
+		};
+		E32F4DAE21F7080B00A3B527 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				E32F4DAF21F7082D00A3B527 /* Config.xcconfig */,
+				E32F4DB121F7085400A3B527 /* MCConstants.h */,
+				E32F4DB221F7085400A3B527 /* MCConstants.m */,
+				E32F4DB021F7085300A3B527 /* Whitbread-Bridging-Header.h */,
+			);
+			path = Environments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +163,7 @@
 				TargetAttributes = {
 					E32F4D8A21F7069F00A3B527 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					E32F4D9E21F706A300A3B527 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -197,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32F4DB321F7085400A3B527 /* MCConstants.m in Sources */,
 				E32F4D9121F7069F00A3B527 /* ViewController.swift in Sources */,
 				E32F4D8F21F7069F00A3B527 /* AppDelegate.swift in Sources */,
 			);
@@ -242,6 +261,7 @@
 /* Begin XCBuildConfiguration section */
 		E32F4DA621F706A300A3B527 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E32F4DAF21F7082D00A3B527 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -302,6 +322,7 @@
 		};
 		E32F4DA721F706A300A3B527 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E32F4DAF21F7082D00A3B527 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -358,6 +379,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F53K8XZ6AA;
 				INFOPLIST_FILE = Whitbread/Info.plist;
@@ -367,6 +389,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.maarut.Whitbread;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Whitbread/Environments/Whitbread-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -376,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F53K8XZ6AA;
 				INFOPLIST_FILE = Whitbread/Info.plist;
@@ -385,6 +410,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.maarut.Whitbread;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Whitbread/Environments/Whitbread-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
