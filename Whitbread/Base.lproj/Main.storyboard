@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,52 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Whitbread" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GBc-LZ-DKP">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="hdl-Wl-9b6"/>
+                                    <outletCollection property="gestureRecognizers" destination="81d-K6-K8c" appends="YES" id="sZn-YC-Uo4"/>
+                                </connections>
+                            </mapView>
+                            <searchBar contentMode="redraw" placeholder="Place name" translatesAutoresizingMaskIntoConstraints="NO" id="XWc-bb-hi2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uSg-9q-X9U"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XWc-bb-hi2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FOF-Nc-Hn0"/>
+                            <constraint firstAttribute="trailing" secondItem="XWc-bb-hi2" secondAttribute="trailing" id="Kr5-yW-AcU"/>
+                            <constraint firstItem="XWc-bb-hi2" firstAttribute="leading" secondItem="GBc-LZ-DKP" secondAttribute="leading" id="KrI-ad-jHf"/>
+                            <constraint firstItem="XWc-bb-hi2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OeY-zC-Q60"/>
+                            <constraint firstItem="GBc-LZ-DKP" firstAttribute="top" secondItem="XWc-bb-hi2" secondAttribute="bottom" id="SFs-m4-Cdz"/>
+                            <constraint firstItem="GBc-LZ-DKP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TTF-tV-bzg"/>
+                            <constraint firstItem="XWc-bb-hi2" firstAttribute="trailing" secondItem="GBc-LZ-DKP" secondAttribute="trailing" id="iia-br-RMe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="GBc-LZ-DKP" id="wF8-ws-TNV"/>
+                        <outlet property="searchBar" destination="XWc-bb-hi2" id="dgu-k6-INp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="81d-K6-K8c">
+                    <connections>
+                        <action selector="didTapOnMap:" destination="BYZ-38-t0r" id="pU7-yl-GqQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
