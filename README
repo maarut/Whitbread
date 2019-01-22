@@ -1,0 +1,6 @@
+Whitbread
+=========
+
+# Keys.example.xcconfig.
+
+Copy this file to `Whitbread/Environments/Keys.xcconfig` and insert your FourSquare API details in the file.
