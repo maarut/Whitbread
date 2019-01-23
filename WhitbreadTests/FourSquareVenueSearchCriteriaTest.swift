@@ -16,12 +16,10 @@ class StubFourSquareSearchProcessor: FourSquareVenueSearchResultsProcessor {
         self.expectation = expectation
     }
     func process(venues: [Venue]) {
-        NSLog("There")
         expectation.fulfill()
     }
     
     func handle(error: NSError) {
-        NSLog("Here")
     }
 }
 
