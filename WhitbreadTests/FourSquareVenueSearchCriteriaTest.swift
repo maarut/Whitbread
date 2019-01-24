@@ -39,15 +39,19 @@ class FourSquareVenueSearchCriteriaTest: XCTestCase {
         let rad = 50
         let searchCriteria = FourSquareVenueSearchCriteria(centrePoint: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: rad)
         let request = searchCriteria.request
+        XCTAssertEqual(request.url?.scheme, "https", "Sheme")
         XCTAssertEqual(request.url?.host, "api.foursquare.com", "Host")
         XCTAssertEqual(request.url?.path, "/v2/venues/explore", "Path")
-        XCTAssertNotNil(request.url?.query)
-        let query = request.url!.query!
-        XCTAssertTrue(query.contains("ll=\(lat),\(long)"))
-        XCTAssertTrue(query.contains("radius=\(rad)"))
-        XCTAssertTrue(query.contains("client_id="))
-        XCTAssertTrue(query.contains("client_secret="))
-        XCTAssertTrue(query.contains("v="))
+        if let query = request.url?.query {
+            XCTAssertTrue(query.contains("ll=\(lat),\(long)"))
+            XCTAssertTrue(query.contains("radius=\(rad)"))
+            XCTAssertTrue(query.contains("client_id="))
+            XCTAssertTrue(query.contains("client_secret="))
+            XCTAssertTrue(query.contains("v="))
+        }
+        else {
+            XCTFail("Query")
+        }
     }
     
     func testSearchRequest() {

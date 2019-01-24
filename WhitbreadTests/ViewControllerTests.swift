@@ -34,10 +34,15 @@ class ViewControllerTests: XCTestCase {
             Venue(id: "3", name: "Three", location:
                 Location(latitude: 2, longitude: 2, formattedAddress: []), categories: []),
             ]
+        XCTAssertEqual(vc.map.annotations.count, 0)
         vc.process(venues: venues)
-        
-        
-        XCTAssertEqual(vc.map.annotations.count, venues.count)
+        let expectation = XCTestExpectation(description: "venue process")
+        DispatchQueue.main.async {
+            if vc.map.annotations.count == venues.count {
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 5)
     }
     
     func testMapAnnotationsClearedOnReceiptOfVenues() {
@@ -45,10 +50,18 @@ class ViewControllerTests: XCTestCase {
         vc.map = MKMapView(frame: .zero)
         let annotation = MKPointAnnotation()
         vc.map.addAnnotations([annotation])
-
+        
+        XCTAssertEqual(vc.map.annotations.count, 1)
+        
         vc.process(venues: [])
         
-        XCTAssertEqual(vc.map.annotations.count, 0)
+        let expectation = XCTestExpectation(description: "venue clear")
+        DispatchQueue.main.async {
+            if vc.map.annotations.count == 0 {
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 5)
     }
     
     func testRetrievingLocationCentersMap() {
@@ -56,8 +69,16 @@ class ViewControllerTests: XCTestCase {
         vc.map = MKMapView(frame: CGRect(origin: .zero, size: CGSize(width: 320, height: 480)))
         let center = CLLocationCoordinate2D(latitude: 45, longitude: 50)
         vc.locationRetrieved(center)
-        
-        XCTAssertEqual(vc.map.centerCoordinate.longitude, center.longitude, accuracy: 0.1)
-        XCTAssertEqual(vc.map.centerCoordinate.latitude, center.latitude, accuracy: 0.1)
+        let mapLat = XCTestExpectation(description: "map lat")
+        let mapLong = XCTestExpectation(description: "map long")
+        DispatchQueue.main.async {
+            if abs(vc.map.centerCoordinate.longitude - center.longitude) < 0.1 {
+                mapLong.fulfill()
+            }
+            if abs(vc.map.centerCoordinate.latitude - center.latitude) < 0.1 {
+                mapLat.fulfill()
+            }
+        }
+        wait(for: [mapLat, mapLong], timeout: 5)
     }
 }

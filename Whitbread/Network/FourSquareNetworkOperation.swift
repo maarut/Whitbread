@@ -83,7 +83,7 @@ extension FourSquareNetworkOperation: URLSessionDataDelegate
             return
         }
         if let response = response as? HTTPURLResponse {
-            if !(response.statusCode ~= 200 ..< 300) {
+            if !(200 ..< 300).contains(response.statusCode) {
                 
                 let invalidStatusProcessor = InvalidStatusProcessor(processor: processor)
                 processor = invalidStatusProcessor
@@ -143,7 +143,7 @@ private class InvalidStatusProcessor: FourSquareNetworkOperationProcessor
             handle(error: error)
             return
         }
-        if let message = json["message"] as? String {
+        if let meta = json["meta"] as? [String: AnyObject], let message = meta["errorDetail"] as? String {
             let userInfo = [NSLocalizedDescriptionKey: message]
             let error = NSError(domain: "InvalidStatusProcessor.processData",
                                 code: FourSquareNetworkOperationError.invalidStatus.rawValue, userInfo: userInfo)

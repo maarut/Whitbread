@@ -38,7 +38,9 @@ extension ViewController: LocationSearchCompletedProtocol {
     func locationRetrieved(_ location: CLLocationCoordinate2D) {
         let criteria = FourSquareVenueSearchCriteria(centrePoint: location, radius: 1000)
         FourSquareClient.instance.getVenues(criteria, resultsProcessor: self)
-        map.setRegion(MKCoordinateRegionMakeWithDistance(location, 2000, 2000), animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.map.setRegion(MKCoordinateRegionMakeWithDistance(location, 2000, 2000), animated: true)
+        }
     }
     
     func searchFailed(_ error: CLError) {
@@ -80,15 +82,19 @@ extension ViewController: UISearchBarDelegate {
 // MARK: - FourSquareVenueSearchResultsProcessor Implementation
 extension ViewController: FourSquareVenueSearchResultsProcessor {
     func process(venues: [Venue]) {
-        map.removeAnnotations(map.annotations)
-        let annotations = venues.map { venue -> MKPointAnnotation in
-            let a = MKPointAnnotation.init()
-            a.coordinate = CLLocationCoordinate2D(latitude: venue.location.latitude,
-                                                  longitude: venue.location.longitude)
-            a.title = venue.name
-            return a
+        DispatchQueue.main.async { [weak self] in
+            if let strongSelf = self {
+                strongSelf.map.removeAnnotations(strongSelf.map.annotations)
+                let annotations = venues.map { venue -> MKPointAnnotation in
+                    let a = MKPointAnnotation.init()
+                    a.coordinate = CLLocationCoordinate2D(latitude: venue.location.latitude,
+                                                          longitude: venue.location.longitude)
+                    a.title = venue.name
+                    return a
+                }
+                strongSelf.map.addAnnotations(annotations)
+            }
         }
-        map.addAnnotations(annotations)
     }
     
     func handle(error: NSError) {
