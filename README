@@ -1,6 +1,28 @@
 Whitbread
 =========
 
-# Keys.example.xcconfig.
+# Description
 
-Copy this file to `Whitbread/Environments/Keys.xcconfig` and insert your FourSquare API details in the file.
+This project is an MVP app that requests a search location from the user, and uses that location as the argument to FourSquare to view recommended places nearby.
+
+# Building the project
+
+You must use the latest Xcode. The project targets iOS 12.1 and is written with Swift 4.2 (though with minor changes can be build for Swift 4.1 also). It does not have any external dependencies.
+
+## Keys.example.xcconfig.
+
+Copy this file to `Whitbread/Environments/Keys.xcconfig` and insert your FourSquare API details in the file. Not doing so will result in a failed compile, asking where the file is.
+
+Then, simply hit Build and Run!
+
+# Approach
+
+1. The interface is built using standard UIKit classes and incorporates use of `UISearchBar` and `MKMapView`.
+2. `CoreLocation` is used to take the text of a place name and reverse geocode it to a latitude and longitude. The `LocationSearch` class wraps the usage of geocoder to use the delegate pattern rather than excessive closures.
+3. Network code is built on `URLSession`, `Operation` and `OperationQueue`. Each high level operation is contained in it's own class (in this case there is one - FourSquareVenueSearch). The high level class deals with exposing the web API criteria of interest to the application, and bundles the response from the API in a struct that a delegate processes. The JSON response is decoded in to separate structs detailed in `Venue.swift` using the `Codable` protocol with `JSONDecoder`.
+
+# Short Comings
+
+1. Currently only place names are displayed. The intention is to display some of the other  venue information when tapping on an annotation on the map. This would either be done as an overlay, or a segue to a new screen.
+2. There is no error handling. Empty error handlers are in place, but they are empty methods.
+3. The tests feel light - more could be added. Further test cases of value would need to be considered and implemented.
