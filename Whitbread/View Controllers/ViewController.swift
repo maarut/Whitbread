@@ -39,7 +39,8 @@ extension ViewController: LocationSearchCompletedProtocol {
         let criteria = FourSquareVenueSearchCriteria(centrePoint: location, radius: 1000)
         FourSquareClient.instance.getVenues(criteria, resultsProcessor: self)
         DispatchQueue.main.async { [weak self] in
-            self?.map.setRegion(MKCoordinateRegionMakeWithDistance(location, 2000, 2000), animated: true)
+            self?.map.setRegion(MKCoordinateRegion(center: location, latitudinalMeters: 2000, longitudinalMeters: 2000),
+                                animated: true)
         }
     }
     
