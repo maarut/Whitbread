@@ -34,9 +34,9 @@ struct FourSquareVenueSearchCriteria: FourSquareNetworkOperationRequestor
         let parameters: [String: Any] = [
             "ll": "\(centrePoint.latitude),\(centrePoint.longitude)",
             "radius": radius,
-            "intent": "browse"
+            "section": "topPicks"
         ]
-        return URLRequest(url: FourSquareURL(method: "venues/search", parameters: parameters).url as URL)
+        return URLRequest(url: FourSquareURL(method: "venues/explore", parameters: parameters).url as URL)
     }
     
     init(centrePoint: CLLocationCoordinate2D, radius: Int)
@@ -69,7 +69,10 @@ class FourSquareVenueSearch: FourSquareNetworkOperationProcessor {
             handle(error: error)
             return
         }
-        if let venues = parsedJson.response?.venues {
+        if let groups = parsedJson.response?.groups {
+            let venues = groups.flatMap { group in
+                group.items.map( { item in item.venue } )
+            }
             resultsHandler?.process(venues: venues)
         }
         else {

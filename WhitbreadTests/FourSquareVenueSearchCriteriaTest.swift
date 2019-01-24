@@ -40,7 +40,7 @@ class FourSquareVenueSearchCriteriaTest: XCTestCase {
         let searchCriteria = FourSquareVenueSearchCriteria(centrePoint: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: rad)
         let request = searchCriteria.request
         XCTAssertEqual(request.url?.host, "api.foursquare.com", "Host")
-        XCTAssertEqual(request.url?.path, "/v2/venues/search", "Path")
+        XCTAssertEqual(request.url?.path, "/v2/venues/explore", "Path")
         XCTAssertNotNil(request.url?.query)
         let query = request.url!.query!
         XCTAssertTrue(query.contains("ll=\(lat),\(long)"))

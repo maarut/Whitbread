@@ -31,8 +31,16 @@ struct Venue: Codable {
     let categories: [Category]
 }
 
+struct VenueRecommendationItem: Codable {
+    let venue: Venue
+}
+
+struct VenueRecommendationGroup: Codable {
+    let items: [VenueRecommendationItem]
+}
+
 struct VenueResponse: Codable {
-    let venues: [Venue]
+    let groups: [VenueRecommendationGroup]
 }
 
 struct VenueResponseObject: Codable {
