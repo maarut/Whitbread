@@ -11,15 +11,18 @@ import CoreLocation
 @testable import Whitbread
 
 class StubFourSquareSearchProcessor: FourSquareVenueSearchResultsProcessor {
-    private let expectation: XCTestExpectation
-    init(_ expectation: XCTestExpectation) {
-        self.expectation = expectation
+    private let processExpectation: XCTestExpectation?
+    private let errorExpectation: XCTestExpectation?
+    init(processExpectation: XCTestExpectation?, errorExpectation: XCTestExpectation?) {
+        self.processExpectation = processExpectation
+        self.errorExpectation = errorExpectation
     }
     func process(venues: [Venue]) {
-        expectation.fulfill()
+        processExpectation?.fulfill()
     }
     
     func handle(error: NSError) {
+        errorExpectation?.fulfill()
     }
 }
 
@@ -60,7 +63,19 @@ class FourSquareVenueSearchCriteriaTest: XCTestCase {
         let rad = 50
         let searchCriteria = FourSquareVenueSearchCriteria(centrePoint: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: rad)
         let asyncExpectation = XCTestExpectation(description: "venue processor")
-        let processor = StubFourSquareSearchProcessor(asyncExpectation)
+        let processor = StubFourSquareSearchProcessor(processExpectation: asyncExpectation, errorExpectation: nil)
+        FourSquareClient.instance.getVenues(searchCriteria, resultsProcessor: processor)
+        
+        wait(for: [asyncExpectation], timeout: 5)
+    }
+    
+    func testBadDataInCriteria() {
+        let lat: Double = 1000
+        let long: Double = 1000
+        let rad = 50000000
+        let searchCriteria = FourSquareVenueSearchCriteria(centrePoint: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: rad)
+        let asyncExpectation = XCTestExpectation(description: "venue processor")
+        let processor = StubFourSquareSearchProcessor(processExpectation: nil, errorExpectation: asyncExpectation)
         FourSquareClient.instance.getVenues(searchCriteria, resultsProcessor: processor)
         
         wait(for: [asyncExpectation], timeout: 5)
